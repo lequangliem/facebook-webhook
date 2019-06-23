@@ -22,14 +22,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/webhook', function(req, res) {
-  if (req.query['hub.verify_token'] === 'anh_hoang_dep_trai_vo_doi') {
-    res.send(req.query['hub.challenge']);
+  if (req.query['hub.verify_token'] === 'lien_xoan') {
+    res.send(JSON.stringify(req.body) + req.query['hub.challenge']);
   }
   res.send('Error, wrong validation token');
 });
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1");
+app.set('port', process.env.PORT || 3002);
+app.set('ip', "0.0.0.0");
 
 server.listen(app.get('port'), app.get('ip'), function() {
   console.log("Chat bot server listening at %s:%d ", app.get('ip'), app.get('port'));
