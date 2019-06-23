@@ -28,7 +28,7 @@ app.get('/webhook', function(req, res) {
   res.send('Error, wrong validation token');
 });
 
-app.set('port', process.env.PORT || 3002);
+app.set('port', 3002);
 app.set('ip', "0.0.0.0");
 
 server.listen(app.get('port'), app.get('ip'), function() {
